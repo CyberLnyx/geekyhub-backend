@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.validPasswordRegex = exports.adminEmailRegex = exports.matricNumberRegex = exports.studentEmailRegex = void 0;
+exports.validPasswordRegex = exports.adminEmailRegex = exports.matricNumberRegex = exports.studentEmailRegex = exports.courseCodeRegex = void 0;
 // const studentEmailRegex = /^[a-zA-Z]+\.[a-zA-Z]+@tech-u\.edu\.ng$/;
 const studentEmailRegex = /^[a-zA-Z\-]+\.[a-zA-Z\-]+@tech-u\.edu\.ng$/;
 exports.studentEmailRegex = studentEmailRegex;
@@ -10,3 +10,4 @@ const validPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!])(?!.
 exports.validPasswordRegex = validPasswordRegex;
 const matricNumberRegex = /^125\/(22|23)\/[12]\/\d{4}$/;
 exports.matricNumberRegex = matricNumberRegex;
+exports.courseCodeRegex = /^[a-zA-Z]{3}[\d+]{3}/;

@@ -9,15 +9,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getFileMetaData = exports.uploadImage = exports.deleteImage = void 0;
+exports.getFileMetaData = exports.uploadFile = exports.deleteFile = void 0;
 const storage_1 = require("firebase/storage");
 const init_1 = require("../firebase/init"); // Adjust the path as necessary
 const helpers_1 = require("../helpers");
-const deleteImage = (imagePath) => __awaiter(void 0, void 0, void 0, function* () {
+const deleteFile = (filePath) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const imageRef = (0, storage_1.ref)(init_1.storage, imagePath);
-        yield (0, storage_1.deleteObject)(imageRef);
-        console.log("Image deleted successfully");
+        const fileRef = (0, storage_1.ref)(init_1.storage, filePath);
+        yield (0, storage_1.deleteObject)(fileRef);
+        console.log("File deleted successfully");
     }
     catch (error) {
         if (typeof error === "string")
@@ -26,18 +26,18 @@ const deleteImage = (imagePath) => __awaiter(void 0, void 0, void 0, function* (
             (0, helpers_1.throwServerError)(error.message);
     }
 });
-exports.deleteImage = deleteImage;
-const uploadImage = (uniqueId, file, bucketName) => __awaiter(void 0, void 0, void 0, function* () {
+exports.deleteFile = deleteFile;
+const uploadFile = (uniqueId, file, bucketName) => __awaiter(void 0, void 0, void 0, function* () {
     const thumbNailRef = (0, storage_1.ref)(init_1.storage, `${bucketName}/${uniqueId}-${file.originalname}`);
     yield (0, storage_1.uploadBytes)(thumbNailRef, file.buffer, { contentType: file.mimetype });
     const fileDownloadUrl = yield (0, storage_1.getDownloadURL)(thumbNailRef);
     const fileMetaData = yield (0, storage_1.getMetadata)(thumbNailRef);
     return { fileDownloadUrl, fileMetaData };
 });
-exports.uploadImage = uploadImage;
+exports.uploadFile = uploadFile;
 const getFileMetaData = (url) => __awaiter(void 0, void 0, void 0, function* () {
-    const defaultImageRef = (0, storage_1.ref)(init_1.storage, url);
-    const metaData = yield (0, storage_1.getMetadata)(defaultImageRef);
+    const defaultFileRef = (0, storage_1.ref)(init_1.storage, url);
+    const metaData = yield (0, storage_1.getMetadata)(defaultFileRef);
     console.log("metadatas", metaData);
 });
 exports.getFileMetaData = getFileMetaData;

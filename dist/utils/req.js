@@ -8,7 +8,7 @@ const throwErrorIfBodyIsEmpty = (data, others, message) => {
         (0, helpers_1.throwBadRequestError)(message || "Missing request body");
     if (others && others.length > 0) {
         for (const key of others) {
-            if (!(key in data) || !data[key]) {
+            if (!(key in data) || data[key] === undefined || data[key] === null) {
                 (0, helpers_1.throwBadRequestError)(`Missing ${key} in request body`);
             }
         }

@@ -10,7 +10,7 @@ export const throwErrorIfBodyIsEmpty = (
 
   if (others && others.length > 0) {
     for (const key of others) {
-      if (!(key in data) || !data[key]) {
+      if (!(key in data) || data[key] === undefined || data[key] === null) {
         throwBadRequestError(`Missing ${key} in request body`);
       }
     }

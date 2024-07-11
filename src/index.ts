@@ -10,7 +10,7 @@ import {
   routeNotFound,
   errorHandler,
 } from "./middlewares";
-import { adminRouter } from "./routes";
+import { adminRouter, docRouter } from "./routes";
 
 // Configure env
 dotenv.config();
@@ -54,7 +54,8 @@ app.use(express.json({})); // Parse json data in request body
 app.use(requestLogger); // Log any incoming request to the console
 
 appRouter.use("/auth/admins", adminRouter);
-app.use("/student-week/api/v1", appRouter);
+appRouter.use("/documents", docRouter);
+app.use("/geekyhub/api/v1", appRouter);
 
 app.get("/", (req: Request, res: Response) => {
   return res.send({

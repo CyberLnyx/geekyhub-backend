@@ -41,7 +41,8 @@ app.use(express_1.default.urlencoded({ extended: true })); // Parse urlencoded d
 app.use(express_1.default.json({})); // Parse json data in request body
 app.use(middlewares_1.requestLogger); // Log any incoming request to the console
 appRouter.use("/auth/admins", routes_1.adminRouter);
-app.use("/student-week/api/v1", appRouter);
+appRouter.use("/documents", routes_1.docRouter);
+app.use("/geekyhub/api/v1", appRouter);
 app.get("/", (req, res) => {
     return res.send({
         success: true,

@@ -9,6 +9,8 @@ const validPasswordRegex =
 
 const matricNumberRegex = /^125\/(22|23)\/[12]\/\d{4}$/;
 
+export const courseCodeRegex = /^[a-zA-Z]{3}[\d+]{3}/;
+
 export {
   studentEmailRegex,
   matricNumberRegex,

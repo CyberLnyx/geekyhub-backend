@@ -8,18 +8,18 @@ import {
 import { storage } from "../firebase/init"; // Adjust the path as necessary
 import { throwServerError } from "../helpers";
 
-export const deleteImage = async (imagePath: string) => {
+export const deleteFile = async (filePath: string) => {
   try {
-    const imageRef = ref(storage, imagePath);
-    await deleteObject(imageRef);
-    console.log("Image deleted successfully");
+    const fileRef = ref(storage, filePath);
+    await deleteObject(fileRef);
+    console.log("File deleted successfully");
   } catch (error: any) {
     if (typeof error === "string") throwServerError(error);
     if (error.message) throwServerError(error.message);
   }
 };
 
-export const uploadImage = async (
+export const uploadFile = async (
   uniqueId: string,
   file: any,
   bucketName: string
@@ -35,7 +35,7 @@ export const uploadImage = async (
 };
 
 export const getFileMetaData = async (url: string) => {
-  const defaultImageRef = ref(storage, url);
-  const metaData = await getMetadata(defaultImageRef);
+  const defaultFileRef = ref(storage, url);
+  const metaData = await getMetadata(defaultFileRef);
   console.log("metadatas", metaData);
 };
