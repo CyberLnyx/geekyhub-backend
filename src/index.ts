@@ -48,8 +48,8 @@ app.use(
 );
 
 app.use(methodChecker); // Checks if the incoming request method is supported
-app.use(express.urlencoded({ extended: true })); // Parse urlencoded data in request body
-app.use(express.json({})); // Parse json data in request body
+app.use(express.urlencoded({ extended: true, limit: "200mb" })); // Parse urlencoded data in request body
+app.use(express.json({ limit: "200mb" })); // Parse json data in request body
 
 app.use(requestLogger); // Log any incoming request to the console
 

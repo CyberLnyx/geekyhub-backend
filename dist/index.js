@@ -37,8 +37,8 @@ app.use((0, cors_1.default)({
     credentials: true,
 }));
 app.use(middlewares_1.methodChecker); // Checks if the incoming request method is supported
-app.use(express_1.default.urlencoded({ extended: true })); // Parse urlencoded data in request body
-app.use(express_1.default.json({})); // Parse json data in request body
+app.use(express_1.default.urlencoded({ extended: true, limit: "200mb" })); // Parse urlencoded data in request body
+app.use(express_1.default.json({ limit: "200mb" })); // Parse json data in request body
 app.use(middlewares_1.requestLogger); // Log any incoming request to the console
 appRouter.use("/auth/admins", routes_1.adminRouter);
 appRouter.use("/documents", routes_1.docRouter);
