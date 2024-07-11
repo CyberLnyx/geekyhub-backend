@@ -8,6 +8,7 @@ const docRouter = routerCreator();
 // create a parser than can parse form-data
 const upload = multer();
 
-docRouter.post("/upload", upload.array("documents"), uploadDocument);
+// docRouter.post("/upload", upload.array("documents"), uploadDocument);
+docRouter.post("/upload", uploadDocument);
 
 export default docRouter;

@@ -10,5 +10,6 @@ const controllers_1 = require("../controllers");
 const docRouter = (0, helpers_1.routerCreator)();
 // create a parser than can parse form-data
 const upload = (0, multer_1.default)();
-docRouter.post("/upload", upload.array("documents"), controllers_1.uploadDocument);
+// docRouter.post("/upload", upload.array("documents"), uploadDocument);
+docRouter.post("/upload", controllers_1.uploadDocument);
 exports.default = docRouter;
